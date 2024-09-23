@@ -24,7 +24,7 @@ my_crs <- "+proj=utm +zone=43 +datum=WGS84 +units=m +no_defs"
 mask_buffer <- 30000
 
 # Extrapolation area: this contains all potential habitat in a country 
-extrap_region <- st_read("data/Survey_Region.shp")
+extrap_region <- st_read("data/survey-region/Survey_Region.shp")
 extrap_region <- extrap_region %>% st_zm() %>% st_transform("+proj=utm +zone=43 +datum=WGS84 +units=m +no_defs") %>% st_geometry()
 plot(extrap_region)
 
@@ -68,9 +68,9 @@ summary(mask)
 ## add spatial covariates
 
 ### read in
-elev <- rast("data/example-elev.tif") # lat-long
-rugged <- rast("data/example-tri.tif") # utm
-roadden <- rast("data/example-roadden.tif") # utm
+elev <- rast("data/spatial-covs/example-elev.tif") 
+rugged <- rast("data/spatial-covs/example-tri.tif") 
+roadden <- rast("data/spatial-covs/example-roadden.tif") 
 
 ### check resolution and projection
 elev
